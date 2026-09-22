@@ -1,0 +1,36 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const groups = [
+  {
+    title: 'MKB-bedrijven',
+    text: 'Groeiende MKB-bedrijven schakelen ons in voor structuur en richting: een stevige basis, de juiste mensen op de juiste plek, en een sparringpartner die strategisch meedenkt zonder de praktijk uit het oog te verliezen.',
+  },
+  {
+    title: 'Familiebedrijven',
+    text: 'In familiebedrijven draait het om continuïteit, cultuur en verhoudingen. Wij begeleiden opvolging, leiderschap en de samenwerking tussen familie en externe medewerkers — met oog voor vertrouwen.',
+  },
+  {
+    title: 'Not-for-profit',
+    text: 'Organisaties in zorg, welzijn, cultuur en onderwijs zoeken de balans tussen maatschappelijke impact en bedrijfsmatig werken. Wij helpen goed werkgeverschap en betrokkenheid te vertalen naar dagelijks gedrag.',
+  },
+];
+---
+<section id="voor-wie" class="section bg-surface" aria-labelledby="voor-wie-title">
+  <div class="container-hb">
+    <SectionHeading
+      eyebrow="Voor wie"
+      id="voor-wie-title"
+      title="Drie werelden, één vraag"
+      intro="MKB, familiebedrijven en not-for-profit: elk met een eigen dynamiek, maar met dezelfde behoefte aan deskundig, toegankelijk en betrouwbaar advies over mens en organisatie."
+    />
+    <ul class="mt-12 grid gap-10 md:grid-cols-3 md:gap-8 lg:gap-12" role="list">
+      {groups.map((g) => (
+        <li class="border-t-2 border-accent pt-6">
+          <h3>{g.title}</h3>
+          <p class="mt-3 text-muted">{g.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

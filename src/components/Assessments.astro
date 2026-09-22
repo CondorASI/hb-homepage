@@ -1,0 +1,47 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const items = [
+  { title: 'Talentassessment', text: 'Wat iemand kan en wil, en waar het potentieel zit.' },
+  { title: 'Ontwikkelassessment', text: 'Concrete ontwikkelpunten en een plan om er te komen.' },
+  { title: 'Selectieassessment', text: 'Onderbouwd kiezen bij een benoeming of aanname.' },
+  { title: 'Loopbaanassessment', text: 'Richting voor de volgende stap, binnen of buiten de organisatie.' },
+];
+---
+<section id="assessments" class="section bg-surface-tint" aria-labelledby="assessments-title">
+  <div class="container-hb grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-20">
+    <div class="order-2 lg:order-1">
+      <img
+        src="images/instrument.webp"
+        srcset="images/instrument.webp 700w, images/instrument@2x.webp 1400w"
+        sizes="(min-width: 1024px) 45vw, calc(100vw - 48px)"
+        width="700"
+        height="525"
+        alt="Handen met het Talent Scan-boekje van HB op tafel"
+        loading="lazy"
+        decoding="async"
+        class="aspect-[4/3] w-full rounded-card object-cover"
+      />
+    </div>
+    <div class="order-1 lg:order-2">
+      <SectionHeading
+        eyebrow="Instrumenten"
+        id="assessments-title"
+        title="Onderbouwd met assessments"
+        intro="Onze adviezen zijn geen mening maar inzicht. Assessments geven je de feiten om met vertrouwen te kiezen — bij selectie, ontwikkeling, loopbaanvragen en teamsamenstelling."
+      />
+      <ul class="mt-8 space-y-4" role="list">
+        {items.map((i) => (
+          <li class="flex gap-3">
+            <svg class="mt-1 h-5 w-5 shrink-0 text-accent-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            <p><strong class="font-bold text-primary">{i.title}</strong><span class="text-muted"> — {i.text}</span></p>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm text-muted">Ook: <strong class="font-semibold text-ink">Spiegelapp</strong> — doorlopende feedback en ontwikkeling voor je medewerkers.</p>
+      <a href="#" class="link-arrow mt-6">Alle assessments <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>

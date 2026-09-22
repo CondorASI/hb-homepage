@@ -1,0 +1,51 @@
+---
+const nav = [
+  { label: 'Advies', href: '#advies' },
+  { label: 'Assessments', href: '#assessments' },
+  { label: 'Voor wie', href: '#voor-wie' },
+  { label: 'Over HB', href: '#over-hb' },
+  { label: 'Inzichten', href: '#inzichten' },
+  { label: 'Contact', href: '#contact' },
+];
+const linkClass = 'inline-flex min-h-11 items-center text-on-dark-muted transition-colors duration-200 hover:text-on-dark';
+---
+<footer class="bg-primary-dark text-on-dark-muted" aria-labelledby="footer-title">
+  <h2 id="footer-title" class="sr-only">Contactgegevens en navigatie</h2>
+  <div class="container-hb py-14 md:py-16">
+    <div class="grid gap-10 md:grid-cols-12 md:gap-8">
+      <div class="md:col-span-5">
+        <img src="images/logo-white.png" width="66" height="36" alt="HB — Hauptmeijer-Beilschmidt" class="h-9 w-auto" loading="lazy" decoding="async" />
+        <p class="mt-5 max-w-sm">Strategisch sparringpartner voor ondernemers bij groei, opvolging en leiderschap. Ruim 30 jaar gevestigd in Den Haag.</p>
+      </div>
+
+      <address class="not-italic md:col-span-4">
+        <p class="font-semibold text-on-dark">Hauptmeijer-Beilschmidt B.V.</p>
+        <p class="mt-2">Koninginnegracht 19<br />2514 AB Den Haag</p>
+        <p class="mt-2 flex flex-col">
+          <a href="tel:+31703469205" class={linkClass}>+31 (0)70 346 92 05</a>
+          <a href="mailto:info@h-b.nu" class={linkClass}>info@h-b.nu</a>
+        </p>
+      </address>
+
+      <nav aria-label="Voettekstnavigatie" class="md:col-span-3">
+        <ul class="flex flex-col" role="list">
+          {nav.map((item) => (
+            <li><a href={item.href} class={linkClass}>{item.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+
+    <div class="mt-12 flex flex-col gap-4 border-t border-on-dark/15 pt-8 text-sm md:flex-row md:items-center md:justify-between">
+      <p>© 2026 Hauptmeijer-Beilschmidt B.V.<span class="mx-2" aria-hidden="true">·</span>KvK [nummer]</p>
+      <div class="flex items-center gap-6">
+        <a href="#" class={linkClass}>Privacyverklaring</a>
+        <a href="#" class="inline-flex h-11 w-11 items-center justify-center rounded-btn text-on-dark-muted transition-colors duration-200 hover:text-on-dark" aria-label="HB op LinkedIn">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

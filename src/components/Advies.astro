@@ -1,0 +1,47 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const items = [
+  {
+    title: 'Groei & structuur',
+    text: 'Je bedrijf groeit sneller dan je organisatie. Wij brengen structuur, richting en de juiste rolverdeling, zodat groei niet ten koste gaat van grip.',
+    icon: '<path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/>',
+  },
+  {
+    title: 'Opvolging & continuïteit',
+    text: 'Wie neemt het over — en hoe? Wij begeleiden opvolging, eigendom en samenwerking in familiebedrijven, met oog voor de verhoudingen.',
+    icon: '<path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>',
+  },
+  {
+    title: 'Leiderschap & teams',
+    text: 'Een MT dat als één geheel werkt. Van leiderschapsontwikkeling tot de samenstelling van je team.',
+    icon: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  },
+  {
+    title: 'De juiste mensen',
+    text: 'Selectie, ontwikkeling en loopbaan. Assessments die vertellen wat je moet weten, niet wat je al wist.',
+    icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M17 11l2 2 4-4"/>',
+  },
+];
+---
+<section id="advies" class="section bg-surface-tint" aria-labelledby="advies-title">
+  <div class="container-hb">
+    <SectionHeading
+      eyebrow="Advies"
+      id="advies-title"
+      title="Waar wij bij helpen"
+      intro="Elke ondernemer loopt op een gegeven moment tegen dezelfde vragen aan. Wij helpen ze te beantwoorden — strategisch én praktisch."
+    />
+    <ul class="mt-12 grid gap-6 md:grid-cols-2" role="list">
+      {items.map((item) => (
+        <li class="card p-7 md:p-8">
+          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-surface-tint text-primary" aria-hidden="true">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={item.icon} />
+          </div>
+          <h3 class="mt-5">{item.title}</h3>
+          <p class="mt-3 text-muted">{item.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

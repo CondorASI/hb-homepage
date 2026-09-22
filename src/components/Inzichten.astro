@@ -1,0 +1,41 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+// PLACEHOLDER: illustrative article titles and teasers (see CONTENT-TODO.md)
+const posts = [
+  {
+    tag: 'Opvolging',
+    title: 'Opvolging in het familiebedrijf: begin vijf jaar eerder dan je denkt',
+    teaser: 'Waarom een goede overdracht meer tijd vraagt dan de meeste ondernemers inplannen, en waar je morgen al mee kunt beginnen.',
+  },
+  {
+    tag: 'Leiderschap',
+    title: 'Waarom een groeiend bedrijf een ander MT nodig heeft',
+    teaser: 'Het team dat je tot hier bracht, is niet altijd het team dat je verder brengt. Over rollen, samenstelling en timing.',
+  },
+  {
+    tag: 'Assessments',
+    title: 'Wat een assessment wél en niet vertelt',
+    teaser: 'Een assessment is geen orakel. Wat je er wél uit haalt, en hoe je de uitkomst gebruikt in een beslissing.',
+  },
+];
+---
+<section id="inzichten" class="section bg-surface" aria-labelledby="inzichten-title">
+  <div class="container-hb">
+    <SectionHeading eyebrow="Inzichten" id="inzichten-title" title="Lezen en verder denken" />
+    <ul class="mt-12 grid gap-4 lg:grid-cols-3 lg:gap-6" role="list">
+      {posts.map((p) => (
+        <li>
+          <article class="card relative flex h-full flex-col p-7 md:p-8">
+            <p class="text-eyebrow font-semibold uppercase tracking-[0.08em] text-accent-dark">{p.tag}</p>
+            <h3 class="mt-4">
+              <a href="#" class="text-primary after:absolute after:inset-0 after:rounded-card hover:underline hover:underline-offset-4">{p.title}</a>
+            </h3>
+            <p class="mt-3 flex-1 text-muted">{p.teaser}</p>
+            <p class="mt-6 font-semibold text-primary" aria-hidden="true">Lees verder <span>→</span></p>
+          </article>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

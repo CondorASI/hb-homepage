@@ -1,0 +1,34 @@
+---
+// Displayed at 40px tall: <file>.webp is 1x, <file>@2x.webp is 2x. Widths below are the 1x widths.
+const logos = [
+  { file: 'De-Eerste-Kamer', name: 'De Eerste Kamer', w: 136 },
+  { file: 'Gemeente-Den-Haag', name: 'Gemeente Den Haag', w: 42 },
+  { file: 'Feadship', name: 'Feadship', w: 136 },
+  { file: 'CGI', name: 'CGI', w: 86 },
+  { file: 'fokker', name: 'Fokker', w: 75 },
+  { file: 'Gemeente-Alphen-aan-den-Rijn', name: 'Gemeente Alphen aan den Rijn', w: 169 },
+  { file: 'akerboom', name: 'Akerboom', w: 154 },
+  { file: 'De-Vries-Scheepsbouw', name: 'De Vries Scheepsbouw', w: 78 },
+];
+---
+<section class="bg-surface" aria-labelledby="logos-title">
+  <div class="container-hb border-b border-line py-10 md:py-12">
+    <h2 id="logos-title" class="text-eyebrow font-semibold uppercase tracking-[0.08em] text-muted">Wij werken o.a. voor</h2>
+    <ul class="mt-7 grid grid-cols-4 items-center gap-x-6 gap-y-8 md:gap-x-8 lg:grid-cols-8" role="list">
+      {logos.map((l) => (
+        <li class="flex items-center justify-center">
+          <img
+            src={`images/logos/${l.file}.webp`}
+            srcset={`images/logos/${l.file}.webp 1x, images/logos/${l.file}@2x.webp 2x`}
+            width={l.w}
+            height="40"
+            alt={l.name}
+            loading="lazy"
+            decoding="async"
+            class="h-auto max-h-8 w-auto max-w-full object-contain opacity-70 grayscale transition duration-200 hover:opacity-100 hover:grayscale-0 md:max-h-10"
+          />
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

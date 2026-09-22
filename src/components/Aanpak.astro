@@ -1,0 +1,45 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const steps = [
+  { n: '01', title: 'Inzicht', text: 'We beginnen met begrijpen: gesprekken, data en waar nodig assessments. Geen aannames.' },
+  { n: '02', title: 'Advies', text: 'Scherp, realistisch en concreet. Advies waar je direct mee aan de slag kunt, met impact voor de komende twee jaar.' },
+  { n: '03', title: 'Begeleiding', text: 'We blijven betrokken bij de uitvoering. Als sparringpartner, niet als toeschouwer.' },
+];
+---
+<section id="aanpak" class="section bg-surface" aria-labelledby="aanpak-title">
+  <div class="container-hb">
+    <div class="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
+      <SectionHeading
+        class="lg:col-span-6"
+        eyebrow="Aanpak"
+        id="aanpak-title"
+        title="Zo werken wij"
+        intro="Geen standaardrapporten en geen dikke adviezen voor in de la. Wel een aanpak die je organisatie verder brengt."
+      />
+      <div class="lg:col-span-6">
+        <img
+          src="images/aanpak.webp"
+          srcset="images/aanpak-sm.webp 400w, images/aanpak.webp 800w"
+          sizes="(min-width: 1024px) 40vw, calc(100vw - 48px)"
+          width="800"
+          height="450"
+          alt="Groepssessie van HB rond een vergadertafel"
+          loading="lazy"
+          decoding="async"
+          class="aspect-video w-full rounded-card object-cover"
+        />
+      </div>
+    </div>
+
+    <ol class="mt-14 grid gap-8 border-t border-line pt-10 md:grid-cols-3 md:gap-10" role="list">
+      {steps.map((s) => (
+        <li>
+          <span class="text-sm font-bold tracking-[0.08em] text-accent-dark" aria-hidden="true">{s.n}</span>
+          <h3 class="mt-2">{s.title}</h3>
+          <p class="mt-3 text-muted">{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

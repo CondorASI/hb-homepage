@@ -1,0 +1,20 @@
+---
+/** Eyebrow + H2 (+ optional intro). The H2 id is used by the section's aria-labelledby. */
+interface Props {
+  eyebrow: string;
+  title: string;
+  id: string;
+  intro?: string;
+  onDark?: boolean;
+  center?: boolean;
+  class?: string;
+}
+const { eyebrow, title, id, intro, onDark = false, center = false, class: className = '' } = Astro.props;
+---
+<div class:list={['max-w-2xl', center && 'mx-auto text-center', className]}>
+  <p class:list={['eyebrow', onDark && 'eyebrow-on-dark', center && 'justify-center']}>{eyebrow}</p>
+  <h2 id={id} class:list={['mt-4', onDark && 'text-on-dark']}>{title}</h2>
+  {intro && (
+    <p class:list={['mt-5 text-lg', onDark ? 'text-on-dark-muted' : 'text-muted', center && 'mx-auto']}>{intro}</p>
+  )}
+</div>

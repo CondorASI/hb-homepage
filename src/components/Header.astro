@@ -1,0 +1,85 @@
+---
+const nav = [
+  { label: 'Advies', href: '#advies' },
+  { label: 'Assessments', href: '#assessments' },
+  { label: 'Voor wie', href: '#voor-wie' },
+  { label: 'Over HB', href: '#over-hb' },
+  { label: 'Inzichten', href: '#inzichten' },
+  { label: 'Contact', href: '#contact' },
+];
+---
+<header
+  id="site-header"
+  class="sticky top-0 z-50 border-b border-transparent bg-surface/95 backdrop-blur transition-colors duration-200 data-[scrolled]:border-line"
+>
+  <div class="container-hb flex h-18 items-center justify-between gap-6">
+    <a href="#top" class="flex min-h-11 items-center" aria-label="HB — Hauptmeijer-Beilschmidt, naar boven">
+      <img src="images/logo.svg" width="66" height="36" alt="" class="h-9 w-auto" />
+    </a>
+
+    <nav aria-label="Hoofdnavigatie" class="hidden items-center gap-1 lg:flex">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          class="inline-flex min-h-11 items-center rounded-btn px-3.5 font-medium text-ink transition-colors duration-200 hover:bg-surface-tint hover:text-primary"
+        >{item.label}</a>
+      ))}
+      <span
+        class="ml-2 inline-flex min-h-11 items-center px-2 text-sm font-medium text-muted"
+        aria-disabled="true"
+        title="Engelse versie volgt"
+      >NL<span class="mx-1 opacity-50">/</span><span class="opacity-50">EN</span></span>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="#contact" class="btn btn-primary hidden md:inline-flex">Plan een strategiegesprek</a>
+      <button
+        id="nav-toggle"
+        type="button"
+        class="group inline-flex h-11 w-11 items-center justify-center rounded-btn text-primary transition-colors duration-200 hover:bg-surface-tint lg:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Menu openen"
+      >
+        <svg class="h-6 w-6 group-aria-expanded:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+        <svg class="hidden h-6 w-6 group-aria-expanded:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-nav" hidden class="absolute inset-x-0 top-full border-b border-line bg-surface shadow-none lg:hidden">
+    <nav aria-label="Mobiele navigatie" class="container-hb flex flex-col py-4">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          class="inline-flex min-h-12 items-center border-b border-line text-lg font-medium text-ink last:border-b-0 hover:text-primary"
+        >{item.label}</a>
+      ))}
+      <a href="#contact" class="btn btn-primary mt-5 md:hidden">Plan een strategiegesprek</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header')!;
+  const btn = document.getElementById('nav-toggle')!;
+  const panel = document.getElementById('mobile-nav')!;
+
+  const setOpen = (open: boolean) => {
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+    panel.hidden = !open;
+  };
+  btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
+  panel.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => e.key === 'Escape' && setOpen(false));
+
+  // 1px bottom border once the page is scrolled (cosmetic; page works without it).
+  // An observer on a sentinel at the top of the page avoids scroll listeners and layout reads.
+  const sentinel = document.getElementById('scroll-sentinel');
+  if (sentinel) new IntersectionObserver(([e]) => header.toggleAttribute('data-scrolled', !e.isIntersecting)).observe(sentinel);
+</script>

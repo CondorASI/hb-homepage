@@ -1,0 +1,53 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+// PLACEHOLDER: surnames and exact roles are not stated on the current site (see CONTENT-TODO.md)
+const advisers = [
+  { name: 'Henk', surname: '[achternaam]', role: 'Adviseur en partner' },
+  { name: 'Krista', surname: '[achternaam]', role: 'Adviseur en partner' },
+];
+const values = ['Strategisch én praktisch', 'Altijd persoonlijk en verbindend', 'Gericht op duurzame impact'];
+---
+<section id="over-hb" class="section bg-surface-warm" aria-labelledby="over-hb-title">
+  <div class="container-hb">
+    <SectionHeading eyebrow="Over HB" id="over-hb-title" title="Je spreekt met de adviseurs zelf" />
+
+    <img
+      src="images/team.webp"
+      srcset="images/team.webp 1200w, images/team@2x.webp 2040w"
+      sizes="(min-width: 1328px) 1200px, calc(100vw - 48px)"
+      width="1200"
+      height="600"
+      alt="Krista en Henk van HB in gesprek aan tafel"
+      loading="lazy"
+      decoding="async"
+      class="mt-10 aspect-[2/1] w-full rounded-card object-cover"
+    />
+
+    <div class="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-7">
+        <p class="text-lg">
+          Bij HB zit je niet bij een accountmanager maar aan tafel met de adviseurs zelf: ondernemers én HR-professionals, met ruim 30 jaar ervaring aan beide kanten van de tafel. Persoonlijk, direct en altijd met oog voor wat jouw organisatie nodig heeft — bij Krista en Henk zit je meteen aan tafel met wie je ook daadwerkelijk gaat helpen.
+        </p>
+        <ul class="mt-8 space-y-3" role="list">
+          {values.map((v) => (
+            <li class="flex items-center gap-3 font-semibold text-primary">
+              <span class="h-0.5 w-5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>{v}
+            </li>
+          ))}
+        </ul>
+        <a href="#" class="link-arrow mt-8">Meer over HB <span aria-hidden="true">→</span></a>
+      </div>
+
+      <ul class="grid grid-cols-2 gap-4 self-start lg:col-span-5 lg:gap-6" role="list">
+        {advisers.map((a) => (
+          <li class="card p-6">
+            <span class="flex h-12 w-12 items-center justify-center rounded-full bg-surface-tint text-lg font-bold text-primary" aria-hidden="true">{a.name[0]}</span>
+            <h3 class="mt-5 text-lg">{a.name} <span class="font-medium text-muted">{a.surname}</span></h3>
+            <p class="mt-1 text-sm text-muted">{a.role}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
